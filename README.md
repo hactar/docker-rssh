@@ -1,7 +1,4 @@
-atmoz/sftp
-==========
-
-Easy to use SFTP ([SSH File Transfer Protocol](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol)) server with [OpenSSH](https://en.wikipedia.org/wiki/OpenSSH). This is an automated build linked with the [debian](https://hub.docker.com/_/debian/) repository.
+Easy to use SCP/SFTP/RSYNC server with OpenSSH using rssh to limit user to these services.
 
 Usage
 -----
@@ -11,9 +8,8 @@ Usage
   - You must set custom UID for your users if you want them to make changes to
     your mounted volumes with permissions matching your host filesystem.
 - Mount volumes in user's home folder.
-  - The users are chrooted to their home directory, so you must mount the
-    volumes in separate directories inside the user's home directory
-    (/home/user/**mounted-directory**).
+  - You must mount volumes in separate directories inside the user's home
+    directory (/home/user/**mounted-directory**).
 
 Examples
 --------
@@ -74,7 +70,7 @@ docker run \
     'foo:$1$0G2g0GSt$ewU0t6GXG15.0hWoOX8X9.:e:1001'
 ```
 
-Tip: you can use makepasswd to generate encrypted passwords:  
+Tip: you can use makepasswd to generate encrypted passwords:
 `echo -n "password" | makepasswd --crypt-md5 --clearfrom -`
 
 ### Using SSH key (without password)
